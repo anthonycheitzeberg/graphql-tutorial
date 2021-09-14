@@ -4,12 +4,15 @@
   "description": "Learning GraphQL",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "npx nodemon app.js"
   },
   "author": "anthonycheitzeberg",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.3",
     "nodemon": "^2.0.12"
   }
 }
