@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv');
 /**
  * Old school way: const graphqlHTTP = require('express-graphql');
  * New ways:
@@ -8,10 +9,18 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql').graphqlHTTP;
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
-const uri = "mongodb+srv://heitzebergUser:heitzebergUser@gql-tutorial.vdlxe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const PORT = 4000;
 const app = express();
+
+// make environment variables available throughout the applications:
+dotenv.config()
+
+// allow cross-origin requests
+app.use(cors())
+
+const uri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@gql-tutorial-shard-00-00.x1m61.mongodb.net:27017,gql-tutorial-shard-00-01.x1m61.mongodb.net:27017,gql-tutorial-shard-00-02.x1m61.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-pceggr-shard-0&authSource=admin&retryWrites=true&w=majority`;
+const PORT = 4000;
 
 // connect to db in mongoDB
 try {
